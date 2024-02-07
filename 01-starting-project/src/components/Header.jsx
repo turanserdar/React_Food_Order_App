@@ -6,14 +6,12 @@ import CartContext from '../store/CartContext.jsx';
 import UserProgressContext from '../store/UserProgressContext.jsx';
 
 export default function Header() {
-    const crtCtx= useContext(CartContext);
+   const crtCtx= useContext(CartContext);
    const UserProgressCtx= useContext(UserProgressContext);
 
     const totalCartItems=crtCtx.items.reduce((totalNumberOfItems, item)=>{
 
-        return  totalNumberOfItems +item.quantity;
-
-
+        return  totalNumberOfItems + item.quantity;
     },0);
 
     function handleShowCart()

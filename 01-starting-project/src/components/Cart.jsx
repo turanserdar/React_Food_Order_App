@@ -8,24 +8,24 @@ import UserProgressContext from "../store/UserProgressContext.jsx";
 export default function Cart()
 {
 
-   const cartCtx= useContext(CartContext);
-  const UserProgressCtx= useContext(UserProgressContext);
+  const cartCtx= useContext(CartContext);
+  const userProgressCtx= useContext(UserProgressContext);
 
    const cartTotal=cartCtx.items.reduce((totalPrice, item)=> totalPrice + item.quantity+item.price,0);
 
-   function handleCloseCart()
+   function handleCloseCart()  
    {
 
-    UserProgressCtx.hideCart();
+    userProgressCtx.hideCart();
    }
 
-    return  (<Modal className="cart" open={UserProgressCtx.progress === 'cart'}>
+    return  (<Modal className="cart" open={userProgressCtx.progress === 'cart'}>
 
         <h2>Your Cart</h2>
         <ul>
          
 
-         {cartCtx.items.map((item)=><li key={item.id}>{item.name}-{item.quantity}</li>)}
+         {cartCtx.items.map((item)=>(<li key={item.id}>{item.name} - {item.quantity}</li>))}
 
         </ul>
 
@@ -37,5 +37,8 @@ export default function Cart()
 
         </p>
 
-    </Modal>);
+    </Modal>
+    
+    );
 }
+
